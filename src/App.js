@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { React, useState } from "react";
+import "./App.css";
+import UserContext from "./context/userContext";
+import HomePage from "./components/HomePage";
+import { Route, Switch } from "react-router-dom";
+import TaskPage from "./components/TaskPage";
 
 function App() {
+  const [user] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={user}>
+      <Switch>
+        <Route path="/taskPage" component={TaskPage}></Route>
+        <Route path="/" exact component={HomePage}></Route>
+      </Switch>
+    </UserContext.Provider>
   );
 }
 

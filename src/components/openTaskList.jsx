@@ -1,30 +1,51 @@
 import React from "react";
 
 function OpenTaskList(props) {
-  let output;
-  const renderOpenTasks = (tasks) => {
-    if (tasks.length > 0) {
-      tasks.map((task) => {
-        console.log(task);
-        if (task.checked === false) {
-          return (
-            <label class="checkbox-container">
-              {console.log(task.checked === false)}
-              <input type="checkbox" value={task.data} checked={task.checked} />
-              <span class="label-text">{task.data}</span>
-            </label>
-          );
-        }
-      });
+  const renderInput = () => {
+    // if (item.checked === false)
+    //   return (
+    //     <React.Fragment>
+    //       <input type="checkbox" checked={item.checked} />
+    //       {item.data}
+    //     </React.Fragment>
+    //   );
+    for (let i = 0; i < props.listItems.length; i++) {
+      console.log("inside loop", props.listItems);
+      console.log("inside loop", props.listItems[i].data);
+      <div>
+        <input type="checkbox" name={props.listItems[i].data} />
+        <label for={props.listItems[i].data}>{props.listItems[i].data}</label>
+      </div>;
     }
   };
+  const returnData = (data) => {
+    return data;
+  };
+
   return (
     <div>
       Open Task List
-      {(output = renderOpenTasks(props.listItems))}
-      {console.log("output", output)}
-      {console.log(props)}
       {console.log(props.listItems)}
+      {renderInput()}
+      {props.listItems.map((item) => {
+        return (
+          <label key={item.data}>
+            <input type="checkbox"></input>
+            <span>{item.data}</span>
+          </label>
+        );
+      })}
+      {/* {props.listItems.length > 0
+          ? props.listIems.map((item) => {
+              <div>
+                <input type="checkbox" />
+                <span>{item.data}</span>
+              </div>;
+            })
+          : ""} */}
+      {/* {props.listIems.data.forEach((item) => {
+          renderInput(item);
+        })} */}
     </div>
   );
 }

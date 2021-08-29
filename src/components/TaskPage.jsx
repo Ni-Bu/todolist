@@ -8,8 +8,7 @@ function TaskPage(props) {
   return (
     <div>
       <h1>task page</h1>
-      {/* contains the value from the input field */}
-      {props.location.state}
+
       <TaskInput listItems={listItems} setListItems={setListItems}></TaskInput>
 
       <OpenTaskList

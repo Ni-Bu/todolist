@@ -12,7 +12,11 @@ function TaskInput(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const temp = [...props.listItems];
-    temp.push({ data: currentItem, checked: false });
+    temp.push({
+      ID: props.listItems.length,
+      data: currentItem,
+      isChecked: false,
+    });
     props.setListItems(temp);
     // props.setListItems([
     //   ...props.ListItems,
